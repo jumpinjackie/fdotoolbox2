@@ -29,6 +29,11 @@ UI_DIR = .ui
 
 win32: LIBS += -L$$PWD/../../Thirdparty/Fdo_x86/Lib/ -lFDO
 
-INCLUDEPATH += $$PWD/../../Thirdparty/Fdo_x86/Inc \
-               $$PWD/../FdoTbShared
+INCLUDEPATH += $$PWD/../../Thirdparty/Fdo_x86/Inc
 DEPENDPATH += $$PWD/../../Thirdparty/Fdo_x86/Inc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../FdoTbCore/release/ -lFdoTbCore
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../FdoTbCore/debug/ -lFdoTbCore
+
+INCLUDEPATH += $$PWD/../FdoTbCore
+DEPENDPATH += $$PWD/../FdoTbCore

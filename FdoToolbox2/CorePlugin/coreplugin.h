@@ -13,7 +13,7 @@ class CorePlugin : public QObject, public IPlugin
 
 public:
     CorePlugin();
-    void initPlugin();
+    void initPlugin(QFdoConnectionManager* connMgr);
     void registerMenuItems(QMenuBar* mainMenu);
     QString getPluginName() const;
 

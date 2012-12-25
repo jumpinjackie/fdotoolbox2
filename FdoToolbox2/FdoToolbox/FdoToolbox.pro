@@ -13,11 +13,17 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    aboutdialog.cpp \
+    aboutpluginsdialog.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    aboutdialog.h \
+    aboutpluginsdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    aboutdialog.ui \
+    aboutpluginsdialog.ui
 
 OBJECTS_DIR = .obj
 MOC_DIR = .moc
@@ -34,3 +40,9 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../FdoTbShared/debu
 
 INCLUDEPATH += $$PWD/../FdoTbShared
 DEPENDPATH += $$PWD/../FdoTbShared
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../FdoTbCore/release/ -lFdoTbCore
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../FdoTbCore/debug/ -lFdoTbCore
+
+INCLUDEPATH += $$PWD/../FdoTbCore
+DEPENDPATH += $$PWD/../FdoTbCore

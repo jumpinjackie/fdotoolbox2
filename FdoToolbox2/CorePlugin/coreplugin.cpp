@@ -8,7 +8,7 @@ CorePlugin::CorePlugin()
 {
 }
 
-void CorePlugin::initPlugin()
+void CorePlugin::initPlugin(QFdoConnectionManager *connMgr)
 {
     qDebug("Loading: %s", qPrintable(this->getPluginName()));
 }

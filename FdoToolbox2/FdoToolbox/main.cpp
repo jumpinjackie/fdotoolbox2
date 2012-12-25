@@ -7,6 +7,7 @@
 #include <QMenuBar>
 #include "plugin_interface.h"
 #include "objectexplorerwidget.h"
+#include "qfdoconnectionmanager.h"
 
 #include "Fdo.h"
 
@@ -32,6 +33,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
 
+    QFdoConnectionManager connMgr;
+
     ObjectExplorerWidget objExp(&w);
     objExp.setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     w.addDockWidget(Qt::LeftDockWidgetArea, &objExp);
@@ -41,7 +44,8 @@ int main(int argc, char *argv[])
     pluginsDir.cd("plugins");
 
     QMenuBar* mainMenu = w.menuBar();
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+    QStringList pluginFiles = pluginsDir.entryList(QDir::Files);
+    foreach (QString fileName, pluginFiles)
     {
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
         QObject* ldrInstance = loader.instance();
@@ -50,11 +54,15 @@ int main(int argc, char *argv[])
             IPlugin* plugin = qobject_cast<IPlugin*>(ldrInstance);
             if (plugin)
             {
-                plugin->initPlugin();
+                plugin->initPlugin(&connMgr);
                 plugin->registerMenuItems(mainMenu);
             }
         }
     }
+
+    w.setPluginInfo(pluginsDir.absolutePath(), pluginFiles);
+    w.addMenuItems();
+    w.addToolbarItems();
 
     w.show();
     

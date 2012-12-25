@@ -36,3 +36,9 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../FdoTbShared/debu
 
 INCLUDEPATH += $$PWD/../FdoTbShared
 DEPENDPATH += $$PWD/../FdoTbShared
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../FdoTbCore/release/ -lFdoTbCore
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../FdoTbCore/debug/ -lFdoTbCore
+
+INCLUDEPATH += $$PWD/../FdoTbCore
+DEPENDPATH += $$PWD/../FdoTbCore

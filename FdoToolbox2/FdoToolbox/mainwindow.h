@@ -17,8 +17,21 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    
+
+    void addMenuItems();
+    void addToolbarItems();
+    void setPluginInfo(const QString& path, const QStringList& files);
+
+private slots:
+    void aboutActionHandler();
+    void aboutPluginsActionHandler();
+
 private:
+    bool m_bMenuInit;
+    bool m_bToolbarInit;
+
+    QString m_pluginPath;
+    QStringList m_pluginFiles;
     Ui::MainWindow *ui;
 };
 

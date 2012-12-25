@@ -5,6 +5,8 @@
 #include <QtWidgets/QMenuBar>
 #include <QtPlugin>
 
+class QFdoConnectionManager;
+
 /// \brief
 /// This is the main plugin interface for FDO Toolbox used to register itself with various aspects
 /// of the Host Application, such as:
@@ -27,7 +29,9 @@ public:
     /// \brief
     /// The entry point of the plugin, invoked by the Host Application. This is the first thing called
     ///
-    virtual void initPlugin() = 0;
+    /// \param connMgr (QFdoConnectionManager*)
+    /// The FDO connection manager
+    virtual void initPlugin(QFdoConnectionManager* connMgr) = 0;
 
     /// \brief
     /// Registers any menu items into the Host Application's main menu

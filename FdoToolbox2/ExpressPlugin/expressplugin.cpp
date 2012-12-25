@@ -6,7 +6,7 @@ ExpressPlugin::ExpressPlugin()
 {
 }
 
-void ExpressPlugin::initPlugin()
+void ExpressPlugin::initPlugin(QFdoConnectionManager* connMgr)
 {
     qDebug("Loading: %s", qPrintable(this->getPluginName()));
 }

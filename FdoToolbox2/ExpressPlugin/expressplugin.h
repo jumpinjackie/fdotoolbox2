@@ -13,7 +13,7 @@ class ExpressPlugin : public QObject, public IPlugin
 
 public:
     ExpressPlugin();
-    void initPlugin();
+    void initPlugin(QFdoConnectionManager *connMgr);
     void registerMenuItems(QMenuBar* mainMenu);
     QString getPluginName() const;
 };
