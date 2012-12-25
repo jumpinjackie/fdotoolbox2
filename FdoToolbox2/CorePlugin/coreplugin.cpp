@@ -81,7 +81,7 @@ void CorePlugin::populateToolsMenu(QMenu *toolsMenu)
     connect(registerProvider, SIGNAL(triggered()), this, SLOT(registerProvider()));
 }
 
-void CorePlugin::populateHelpMenu(QMenu *helpMenu)
+void CorePlugin::populateHelpMenu(QMenu* /*helpMenu*/)
 {
 
 }

@@ -2,12 +2,13 @@
 #define OBJECTEXPLORERWIDGET_H
 
 #include <QDockWidget>
+#include "FdoTbShared_global.h"
 
 namespace Ui {
 class ObjectExplorerWidget;
 }
 
-class ObjectExplorerWidget : public QDockWidget
+class FDOTBSHAREDSHARED_EXPORT ObjectExplorerWidget : public QDockWidget
 {
     Q_OBJECT
     

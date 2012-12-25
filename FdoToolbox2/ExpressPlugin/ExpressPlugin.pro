@@ -13,8 +13,6 @@ CONFIG += plugin
 
 DEFINES += EXPRESSPLUGIN_LIBRARY
 
-INCLUDEPATH += $$PWD/../FdoToolbox
-
 SOURCES += expressplugin.cpp
 
 HEADERS += expressplugin.h\
@@ -32,3 +30,9 @@ win32: LIBS += -L$$PWD/../../Thirdparty/Fdo_x86/Lib/ -lFDO
 
 INCLUDEPATH += $$PWD/../../Thirdparty/Fdo_x86/Inc
 DEPENDPATH += $$PWD/../../Thirdparty/Fdo_x86/Inc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../FdoTbShared/release/ -lFdoTbShared
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../FdoTbShared/debug/ -lFdoTbShared
+
+INCLUDEPATH += $$PWD/../FdoTbShared
+DEPENDPATH += $$PWD/../FdoTbShared
